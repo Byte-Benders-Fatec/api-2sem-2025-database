@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS system_role (
     id INT PRIMARY KEY AUTO_INCREMENT COMMENT 'ID do papel global do sistema',
     name VARCHAR(50) NOT NULL UNIQUE COMMENT 'Nome do papel (ex: Admin, Viewer)',
     description VARCHAR(255) NOT NULL COMMENT 'Descrição do papel e sua função no sistema',
-    level INT NOT NULL UNIQUE COMMENT 'Nível hierárquico do papel (valores maiores indicam maior acesso)'
+    level INT NOT NULL UNIQUE COMMENT 'Nível hierárquico do papel (valores maiores indicam maior acesso)',
+    api_key VARCHAR(192) DEFAULT NULL COMMENT 'Chave de API associada ao papel (usada para autenticação de serviços, podendo ser compartilhada entre papéis)'
 ) COMMENT = 'Tabela de definição de papéis de acesso globais do sistema';
 
 
@@ -168,7 +169,7 @@ CREATE TABLE IF NOT EXISTS two_fa_code (
     attempts INT DEFAULT 0 COMMENT 'Número de tentativas realizadas com esse código',
     max_attempts INT DEFAULT 5 COMMENT 'Número máximo de tentativas permitidas',
     status ENUM('pending', 'verified', 'denied') DEFAULT 'pending' COMMENT 'Estado da verificação: pendente, verificado ou negado',
-    type ENUM('login', 'password_reset', 'password_change', 'critical_action') NOT NULL DEFAULT 'login' COMMENT 'Finalidade do código de verificação gerado',
+    type ENUM('login', 'password_reset', 'password_change', 'critical_action', 'registration') NOT NULL DEFAULT 'login' COMMENT 'Finalidade do código de verificação gerado',
     expires_at DATETIME NOT NULL COMMENT 'Data e hora de expiração do código',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Data de criação do código',
 
