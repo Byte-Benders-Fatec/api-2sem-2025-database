@@ -7,11 +7,11 @@ USE visiona;
 -- Papéis globais do sistema, definidos para controlar o nível de acesso administrativo.
 -- Cada papel possui um nível hierárquico (level) que define sua autoridade dentro da plataforma.
 
-INSERT INTO system_role (id, name, description, level) VALUES
-(1, 'Root', 'Acesso total ao sistema. Gerencia todos os administradores.', 100),
-(2, 'Admin', 'Administra usuários e configurações.', 80),
-(3, 'User', 'Usuário comum.', 50),
-(4, 'Guest', 'Acesso público, sem autenticação. Pode visualizar apenas informações abertas.', 5)
+INSERT INTO system_role (id, name, description, level, api_key) VALUES
+(1, 'Root', 'Acesso total ao sistema. Gerencia todos os administradores.', 100, NULL),
+(2, 'Admin', 'Administra usuários e configurações.', 80, NULL),
+(3, 'User', 'Usuário comum.', 50, NULL),
+(4, 'Guest', 'Acesso público, sem autenticação. Pode visualizar apenas informações abertas.', 5, NULL)
 ON DUPLICATE KEY UPDATE name=VALUES(name);
 
 
