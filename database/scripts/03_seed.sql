@@ -123,9 +123,9 @@ WHERE r.name = 'Visitante';
 -- A associação com system_role define o papel global do usuário na plataforma.
 
 INSERT INTO user (id, name, email, cpf, is_active, system_role_id) VALUES
-(UUID(), 'Joniel Rodrigues de Oliveira', 'jonielrodriguesdeoliveira@gmail.com', '39957461877', TRUE, 1), -- Root
-(UUID(), 'Joniel Rodrigues', 'joniel.rodrigues.oliveira@gmail.com', '77816475993', TRUE, 2), -- Admin
-(UUID(), 'Joniel', 'joniel.site@gmail.com', '01234567899', TRUE, 3), -- User
+(UUID(), 'Daniel Carlos', 'danielcarlos@gmail.com', '00987654321', TRUE, 1), -- Root
+(UUID(), 'Flávio Oliveira', 'flavio.oliveira@gmail.com', '77816475993', TRUE, 2), -- Admin
+(UUID(), 'Mateus Dias', 'mateus.dias@gmail.com', '01234567899', TRUE, 3), -- User
 (UUID(), 'Visitante', 'visitante@byte.dev.br', '00000000000', TRUE, 4) -- Guest
 ON DUPLICATE KEY UPDATE email=VALUES(email);
 
